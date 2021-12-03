@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
+import {BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import Card from "./components/Cards/Card";
+import SingleChar from "./components/Cards/SingleChar";
 import "./App.css";
 
 function App() {
-  let [fetchedData, setFetchedData] = useState([]);
+  // let [fetchedData, setFetchedData] = useState([]);
 
-  let api_url = `https://rickandmortyapi.com/api/character`;
+  // let api_url = `https://rickandmortyapi.com/api/character`;
 
   // useEffect(() => {
   //   (async function () {
@@ -27,29 +30,24 @@ function App() {
   //     axiosPosts();
   // }, [])
 
-  useEffect(() => {
-    (async function () {
-      let data = await fetch(api_url).then((res) => res.json());
-      setFetchedData(data.results);
-    })();
-  }, [api_url]);
+  // useEffect(() => {
+  //   (async function () {
+  //     let data = await fetch(api_url).then((res) => res.json());
+  //     setFetchedData(data.results);
+  //   })();
+  // }, [api_url]);
 
-  console.log(fetchedData);
+  // console.log(fetchedData);
 
   return (
-    <div className="App">
-      {/* <Card results= {results}/> */}
-      Rick n Morty
-      {fetchedData.map((items) => (
-        <div>
-          <h1>
-            {items.name}
-          </h1>
-          <img src= {items.image} alt=""/>
-          
-        </div>
-        
-      ))}
+    <div>
+      <Router>
+        <Routes>
+          <Route path="/:id" element = {<SingleChar />}/>
+          <Route path="/" element={<Card/>}/>
+        </Routes>
+      </Router>
+      
     </div>
   );
 }
