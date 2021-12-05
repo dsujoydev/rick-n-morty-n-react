@@ -1,26 +1,26 @@
-import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import "./Card.css";
 
 function Card() {
-    let [fetchedData, setFetchedData] = useState([]);
+  let [fetchedData, setFetchedData] = useState([]);
 
-    let api_url = `https://rickandmortyapi.com/api/character`;
+  let api_url = `https://rickandmortyapi.com/api/character`;
 
-    useEffect(() => {
-        (async function () {
-          let data = await fetch(api_url).then((res) => res.json());
-          setFetchedData(data.results);
-        })();
-      }, [api_url]);
-    
-      console.log(fetchedData);
-    
+  useEffect(() => {
+    (async function () {
+      let data = await fetch(api_url).then((res) => res.json());
+      setFetchedData(data.results);
+    })();
+  }, [api_url]);
 
-    return (
-        <div className="card">
+  console.log(fetchedData);
+
+  return (
+    <div characters-main> <h1>Rick n Morty</h1>
+          <div className="character-list">
       {/* <Card results= {results}/> */}
-      Rick n Morty
+      
       {fetchedData.map((items) => (
         // <div className="card-data">
         //   <h1 className="item-name">
@@ -30,23 +30,22 @@ function Card() {
         // </div>
 
         <li key={items.id} className="character-item">
-            <Link to={`/${items.id}`}>
-              <div>
-                <div className="img-container">
-                  <img src={items.image} alt={items.name} />
-                </div>
-                <div className="name-container">
-                  <h6>{items.name}</h6>
-                </div>
+          <Link to={`/${items.id}`}>
+            <div className="character-card">
+              <div className="img-container">
+                <img src={items.image} alt={items.name} />
               </div>
-            </Link>
-          </li>
-        
-
+              <div className="name-container">
+                <h6>{items.name}</h6>
+              </div>
+            </div>
+          </Link>
+        </li>
       ))}
-        </div>
-    )
+    </div>
+    </div>
+    
+  );
 }
 
-export default Card
-
+export default Card;
