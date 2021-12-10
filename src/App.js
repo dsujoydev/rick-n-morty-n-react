@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import {BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import Card from "./components/Cards/Card";
 import SingleChar from "./components/Cards/SingleChar";
+
 import "./App.css";
 
 function App() {
@@ -47,7 +48,6 @@ function App() {
           <Route path="/" element={<Card/>}/>
         </Routes>
       </Router>
-      
     </div>
   );
 }
