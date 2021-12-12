@@ -1,0 +1,26 @@
+.char-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.char-img-container {
+  position: relative;
+  border: 5px;
+}
+
+.char-img-container img {
+  width: 100%;
+  display: block;
+}
+
+.char-status-container {
+  position: absolute;
+  top: 8px;
+  right: 5px;
+  font-size: 18px;
+  background-color: chocolate;
+  padding-right: 18px;
+  padding-left: 18px;
+}
